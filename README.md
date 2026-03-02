@@ -6,7 +6,7 @@
 
 | 文件 | 用途 | 放置位置 |
 |------|------|---------|
-| `railwise.jsonc` | RAILWISE-CLI 主配置 | 项目根目录 `.railwise/railwise.jsonc` |
+| `railwise.json` | RAILWISE-CLI 主配置 | 项目根目录 `.railwise/railwise.json` |
 
 ---
 
@@ -28,12 +28,12 @@ cd your-project
 mkdir -p .railwise
 
 # 下载配置文件
-curl -o .railwise/railwise.jsonc https://raw.githubusercontent.com/railwise-cn/railwise-config/main/railwise.jsonc
+curl -o .railwise/railwise.json https://raw.githubusercontent.com/railwise-cn/railwise-config/main/railwise.json
 ```
 
 ### 3. 填入 API Key
 
-编辑 `.railwise/railwise.jsonc`，在对应 provider 的 `apiKey` 字段填入你的密钥。
+编辑 `.railwise/railwise.json`，在对应 provider 的 `apiKey` 字段填入你的密钥。
 
 ### 4. 启动
 
@@ -43,7 +43,7 @@ railwise
 
 ---
 
-## railwise.jsonc 详解
+## railwise.json 详解
 
 这是 RAILWISE-CLI 的主配置文件，控制模型选择、provider 接入和系统行为。
 
@@ -56,7 +56,7 @@ railwise
   ↓
 环境变量 RAILWISE_CONFIG 指向的文件
   ↓
-项目根目录 railwise.jsonc → railwise.json
+项目根目录 railwise.json
   ↓
 .railwise/ 目录下的配置
   ↓
@@ -252,13 +252,9 @@ railwise feishu
 
 ## 常见问题
 
-### Q: `railwise.json` 和 `railwise.jsonc` 有什么区别？
-
-`.jsonc` 支持注释（`// ...`），`.json` 不支持。两者都能被系统识别，优先加载 `.jsonc`。推荐使用 `.jsonc`。
-
 ### Q: API Key 怎么安全存储？
 
-将 `.railwise/railwise.jsonc` 和 `.railwise/railwise.json` 加入 `.gitignore`，不要提交到版本控制。或者使用首次启动时的交互式向导配置密钥（存储在 `~/.local/share/railwise/auth.json`）。
+将 `.railwise/railwise.json` 加入 `.gitignore`，不要提交到版本控制。或者使用首次启动时的交互式向导配置密钥（存储在 `~/.local/share/railwise/auth.json`）。
 
 ### Q: 智能体的模型和全局模型是什么关系？
 

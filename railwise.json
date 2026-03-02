@@ -1,47 +1,21 @@
 {
   "$schema": "https://railwise.ai/config.json",
-  // ==========================================
-  // RAILWISE-CLI 主配置文件
-  // 放置于项目根目录 .railwise/railwise.jsonc
-  // ==========================================
-
-  // 全局默认模型（所有智能体未单独指定时使用此模型）
-  // 推荐：付费用户用 claude-sonnet-4，免费用户改为 "deepseek/deepseek-chat" 或 "zhipuai/glm-4-flash-250414"
   "model": "anthropic/claude-sonnet-4-20250514",
-
-  // 启动后默认进入的智能体（项目总工，负责任务调度）
   "default_agent": "chief_manager",
-
-  // 只显示以下 provider，避免模型列表出现大量无关选项
-  // 如需使用其他 provider（如 openrouter），在此数组中添加即可
   "enabled_providers": ["anthropic", "openai", "gemini", "deepseek", "minimax", "kimi", "zhipuai"],
-
   "provider": {
-    // ========== 付费模型（国际） ==========
-
-    // Anthropic — Claude 系列（编码能力最强）
-    // 直连：https://api.anthropic.com
-    // 代理示例：https://api.jiekou.ai/anthropic（需自行注册代理服务）
     "anthropic": {
       "options": {
         "baseURL": "https://api.anthropic.com",
         "apiKey": ""
       }
     },
-
-    // OpenAI — GPT 系列
-    // 直连：https://api.openai.com/v1
-    // 代理示例：https://api.jiekou.ai/openai/v1
     "openai": {
       "options": {
         "baseURL": "https://api.openai.com/v1",
         "apiKey": ""
       }
     },
-
-    // Google Gemini — 超长上下文（100 万 tokens）
-    // 官方接口：https://generativelanguage.googleapis.com/v1beta/openai
-    // 代理示例：https://api.jiekou.ai/openai/v1
     "gemini": {
       "options": {
         "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
@@ -60,14 +34,6 @@
         }
       }
     },
-
-    // ========== 免费 / 低价国产模型 ==========
-    // 以下模型均通过各厂商官方 OpenAI 兼容 API 接入
-    // 注册即送免费额度，适合零成本起步
-
-    // DeepSeek — 数学推理最强的国产模型（注册送 500 万 tokens）
-    // 注册：https://platform.deepseek.com
-    // data_analyst 和 qa_inspector 的默认模型
     "deepseek": {
       "options": {
         "baseURL": "https://api.deepseek.com/v1",
@@ -86,10 +52,6 @@
         }
       }
     },
-
-    // MiniMax — 百万上下文（注册送免费额度）
-    // 注册：https://platform.minimaxi.com
-    // 重要：必须设置 npm 为 @ai-sdk/openai-compatible
     "minimax": {
       "npm": "@ai-sdk/openai-compatible",
       "api": "https://api.minimax.chat/v1",
@@ -112,10 +74,6 @@
         }
       }
     },
-
-    // Kimi / Moonshot — 131K 长上下文 + 优秀中文能力（注册送免费额度）
-    // 注册：https://platform.moonshot.cn
-    // chief_manager / solution_architect / qa_reviewer / technical_writer / commercial_specialist 的默认模型
     "kimi": {
       "npm": "@ai-sdk/openai-compatible",
       "api": "https://api.moonshot.cn/v1",
@@ -136,10 +94,6 @@
         }
       }
     },
-
-    // 智谱 GLM — glm-4-flash / glm-z1-flash 永久免费
-    // 注册：https://open.bigmodel.cn
-    // 零配置兜底模型（无需任何付费即可使用）
     "zhipuai": {
       "options": {
         "baseURL": "https://open.bigmodel.cn/api/paas/v4",
@@ -164,8 +118,5 @@
       }
     }
   },
-
-  // MCP 服务器配置（如飞书集成、外部数据源等）
-  // 运行 railwise feishu 可自动配置飞书 MCP
   "mcp": {}
 }
