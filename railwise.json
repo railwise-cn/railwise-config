@@ -118,5 +118,9 @@
       }
     }
   },
+  "agent": {
+    "explore": { "model": "deepseek/deepseek-chat" },
+    "general": { "model": "kimi/kimi-k2.5" }
+  },
   "mcp": {}
 }

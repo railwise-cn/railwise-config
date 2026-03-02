@@ -114,6 +114,29 @@ railwise
 "disabled_providers": ["openai"]
 ```
 
+#### `agent`
+
+给系统子代理分配不同的模型。子代理由系统自动调用，不同于上方的 7 个业务智能体。
+
+```json
+"agent": {
+  "explore": { "model": "deepseek/deepseek-chat" },
+  "general": { "model": "kimi/kimi-k2.5" }
+}
+```
+
+可配置的子代理：
+
+| 子代理 | 职责 | 推荐模型 |
+|--------|------|---------|
+| `explore` | 搜索项目代码、理解代码结构 | DeepSeek V3（推理能力强） |
+| `general` | 通用任务执行 | Kimi K2.5（长上下文） |
+| `title` | 生成会话标题 | 免费模型即可 |
+| `summary` | 生成会话摘要 | 免费模型即可 |
+| `compaction` | 上下文压缩 | 免费模型即可 |
+
+> 未配置的子代理使用全局 `model` 字段的模型。
+
 ### Provider 配置
 
 每个 provider 的基本结构：
@@ -230,6 +253,10 @@ railwise feishu
     "deepseek": { "options": { "baseURL": "https://api.deepseek.com/v1", "apiKey": "..." } },
     "kimi": { "npm": "@ai-sdk/openai-compatible", "api": "https://api.moonshot.cn/v1", "options": { "baseURL": "https://api.moonshot.cn/v1", "apiKey": "..." } },
     "zhipuai": { "options": { "baseURL": "https://open.bigmodel.cn/api/paas/v4", "apiKey": "..." } }
+  },
+  "agent": {
+    "explore": { "model": "deepseek/deepseek-chat" },
+    "general": { "model": "kimi/kimi-k2.5" }
   }
 }
 ```
